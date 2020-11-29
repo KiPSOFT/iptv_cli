@@ -102,9 +102,14 @@ async function questions(grp, def) {
             }
             vlc.stdin.pause();
             vlc.kill();
-        } catch (err) {}
-        vlc = spawn(config.vlcPath, [answ.url, '--fullscreen']);
-        await questions(grp, answ.url);
+        } catch (err) {
+        }
+        try {
+            vlc = spawn(config.vlcPath, [answ.url, '--fullscreen']);
+            await questions(grp, answ.url);
+        } catch (err) {
+            console.error('Spawn error:' + err.message);
+        }    
     }
 }
 
