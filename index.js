@@ -105,7 +105,7 @@ async function questions(grp, def) {
         } catch (err) {
         }
         try {
-            vlc = spawn(config.vlcPath, [answ.url, '--fullscreen']);
+            vlc = spawn(config.vlcPath, [answ.url, '--fullscreen', '--no-embedded-video']);
             await questions(grp, answ.url);
         } catch (err) {
             console.error('Spawn error:' + err.message);
